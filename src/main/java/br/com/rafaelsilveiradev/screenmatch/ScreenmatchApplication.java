@@ -2,6 +2,7 @@ package br.com.rafaelsilveiradev.screenmatch;
 
 import br.com.rafaelsilveiradev.screenmatch.model.DadosEpisodio;
 import br.com.rafaelsilveiradev.screenmatch.model.DadosSerie;
+import br.com.rafaelsilveiradev.screenmatch.model.DadosTemporadas;
 import br.com.rafaelsilveiradev.screenmatch.services.ConsumoAPI;
 import br.com.rafaelsilveiradev.screenmatch.services.ConverteDados;
 import org.springframework.boot.CommandLineRunner;
@@ -26,5 +27,11 @@ public class ScreenmatchApplication implements CommandLineRunner {
 		json = consumoApi.obterDados("https://www.omdbapi.com/?t=gilmore+girls&season=1&episode=2&apikey=123e42a0&");
 		DadosEpisodio dadosEpisodio = conversor.obterDados(json, DadosEpisodio.class);
 		System.out.println(dadosEpisodio);
+
+		for (int i = 1; i < dados.totalTemporadas(); i++) {
+			json = consumoApi.obterDados("https://www.omdbapi.com/?t=gilmore+girls&season="+ i + "&apikey=123e42a0&");
+			DadosTemporadas dadosTemporadas = conversor.obterDados(json, DadosTemporadas.class);
+			System.out.println(dadosTemporadas);
+		}
 	}
 }
