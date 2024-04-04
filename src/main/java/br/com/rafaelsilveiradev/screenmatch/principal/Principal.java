@@ -1,5 +1,6 @@
 package br.com.rafaelsilveiradev.screenmatch.principal;
 
+import br.com.rafaelsilveiradev.screenmatch.model.DadosEpisodio;
 import br.com.rafaelsilveiradev.screenmatch.model.DadosSerie;
 import br.com.rafaelsilveiradev.screenmatch.model.DadosTemporadas;
 import br.com.rafaelsilveiradev.screenmatch.services.ConsumoAPI;
@@ -35,5 +36,7 @@ public class Principal {
 			temporadas.add(dadosTemporadas);
 		}
 		temporadas.forEach(System.out::println);
+
+        temporadas.forEach(t -> t.episodios().forEach(e -> System.out.println(e.titulo())));
     }
 }
