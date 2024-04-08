@@ -1,6 +1,7 @@
 package br.com.rafaelsilveiradev.screenmatch.model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 public class Episodio {
     private int temporada;
@@ -18,7 +19,13 @@ public class Episodio {
         } catch (NumberFormatException ex) {
             this.avaliacao = 0.0;
         }
-        this.dataLancamento = LocalDate.parse(dadosEpisodio.dataLancamento());
+
+        try {
+            this.dataLancamento = LocalDate.parse(dadosEpisodio.dataLancamento());
+        } catch (DateTimeParseException ex ){
+            this.dataLancamento = null;
+        }
+
     }
 
     public int getTemporada() {
